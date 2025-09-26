@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація на курс "Трансформація"</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roca+One:wght@400&family=Arimo:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arimo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: #2b1b13;
+            color: #ffde59;
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Roca One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: #ffde59;
+        }
+
+        .header-subtitle {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #ffde59;
+        }
+
+        .faq-nav-btn {
+            background: rgba(255, 222, 89, 0.2);
+            border: 2px solid #ffde59;
+            color: #ffde59;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .faq-nav-btn:hover {
+            background: #ffde59;
+            color: #2b1b13;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 222, 89, 0.3);
+        }
+
+        .main-content {
+            background: white;
+            margin: -20px auto 40px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .status-bar {
+            background: #2b1b13;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .course-info {
+            background: #f8f8f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #D4A574;
+        }
+
+        .course-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #D4A574;
+            margin-bottom: 5px;
+        }
+
+        .detail-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .registration-section {
+            background: linear-gradient(135deg, #2c2c2c 0%, #444 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #D4A574;
+            margin-bottom: 10px;
+        }
+
+        .price-description {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .main-button {
+            background: linear-gradient(135deg, #D4A574 0%, #B8935F 100%);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .main-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 165, 116, 0.5);
+        }
+
+        .secondary-button {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #999;
+            color: #ccc;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #D4A574;
+            color: #D4A574;
+            transform: translateY(-2px);
+        }
+
+        .button-description {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .security-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .warning {
+            color: #D4A574;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            scroll-margin-top: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .faq-item h4 {
+            color: #D4A574;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-item h4:hover {
+            color: #B8935F;
+        }
+
+        .faq-answer {
+            display: none;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid #D4A574;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 25px;
+                margin: -15px 15px 30px;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .faq-nav-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .main-button {
+                font-size: 1.1rem;
+                padding: 18px 30px;
+            }
+
+            .buttons-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Реєстрація на курс</h1>
+            <div class="header-subtitle">
+                Ласкаво просимо! Ви перейшли до реєстрації на 4-тижневий курс Соціального театру "Трансформація"
+            </div>
+            <a href="#faq-section" class="faq-nav-btn">❓ Поширені запитання</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="status-bar">
+                <div style="font-family: 'Arimo', sans-serif;">Обмежена кількість учасників для забезпечення якісної роботи, але якщо раптом для вас забракне місця, ми можемо занести вас у резервний список, тому в будь-якому разі не соромтесь залишати ваші заявки</div>
+                
+                <div class="countdown-section" style="margin-top: 20px; padding: 20px; background: #ffde59; color: #333; border-radius: 10px;">
+                    <h4 style="margin-bottom: 5px;">Старт курсу: 1 листопада 2025 р.</h4>
+                    <h4 style="margin-bottom: 10px;">До закінчення прийому заявок залишилось:</h4>
+                    <div id="countdown" style="font-size: 1.5rem; font-weight: bold;"></div>
+                </div>
+            </div>
+
+            <div class="course-info">
+                <h2>Курс "Трансформація"</h2>
+                <p style="font-style: italic; color: #666; margin-bottom: 15px;">Для тих, хто хоче розкрити себе, знайти свою місію, навчитись розуміти людей</p>
+                <p>Інтенсивна програма особистісного розвитку через театральні техніки, що допоможе вам краще розкрити свій потенціал, відновити енергію та знайти життєву місію.</p>
+                
+                <div class="course-details">
+                    <div class="detail-item">
+                        <div class="detail-number">4</div>
+                        <div class="detail-text">тижні навчання</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-number">8</div>
+                        <div class="detail-text">днів занять</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-number">12</div>
+                        <div class="detail-text">max учасників</div>
+                    </div>
+                </div>
+                
+                <div class="scholarship-info" style="background: #fff3cd; border: 1px solid #D4A574; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                    <p style="color: #856404; font-size: 0.95rem; line-height: 1.6;">
+                        <strong>💛 Підтримка доступності:</strong><br>
+                        Я розумію, наскільки важливим може бути для вас цей курс, тому фінансові обставини не повинні стати перешкодою для участі. Будь ласка, сміливо пишіть на email про свою ситуацію - я розгляну можливість індивідуальної знижки.
+                    </p>
+                </div>
+                
+                <div class="schedule-info" style="background: #f8f9fa; border-left: 4px solid #D4A574; padding: 20px; margin-top: 20px;">
+                    <h4 style="color: #333; margin-bottom: 15px;">📅 Розклад курсу:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; color: #666;">
+                        <div><strong>Початок:</strong> 1 листопада 2025</div>
+                        <div><strong>Заняття:</strong> через вихідні</div>
+                        <div><strong>Час:</strong> 10:00 - 18:00</div>
+                        <div><strong>Тривалість:</strong> 48 годин практики</div>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                        <strong>Дати:</strong> 1-2 листопада, 15-16 листопада, 29-30 листопада, 13-14 грудня<br>
+                        <strong>Формат:</strong> практичні заняття в групі до 12 осіб
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning">
+                Увага! Кількість місць обмежена. Поспішіть з реєстрацією.
+            </div>
+
+            <!-- Registration Section with 2 Simple Buttons -->
+            <div class="registration-section">
+                <div class="price">$489</div>
+                <div class="price-description">
+                    Повна вартість 4-тижневого курсу
+                </div>
+                
+                <div class="buttons-container">
+                    <!-- Button 1: Pay Now -->
+                    <div>
+                        <a href="https://buy.stripe.com/dRm00lfL22KBg2K8Cj63K00" target="_blank" class="main-button">
+                            💛 Заповнити анкету та оплатити $489
+                        </a>
+                        <div class="button-description">
+                            Миттєво резервує ваше місце на курсі
+                        </div>
+                    </div>
+                    
+                    <!-- Button 2: Application for Financial Assistance -->
+                    <div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdwSSv5rh3X6ZC3A8VfDPMuom822_PBcTiE60ZTgK_gWF5Ykg/viewform" target="_blank" class="secondary-button">
+                            📝 Залишити заявку
+                        </a>
+                        <div class="button-description">
+                            Для тих, у кого складна фінансова ситуація. Ми зв'яжемося для обговорення знижки
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="font-size: 0.9rem; margin-top: 25px; opacity: 0.9; color: white; text-align: center;">
+                    🔒 Безпечна оплата • 📧 Миттєве підтвердження • ❓ Підтримка 24/7
+                </div>
+            </div>
+
+            <div class="security-info">
+                🔒 Безпечна оплата через захищене з'єднання<br>
+                📧 Підтвердження реєстрації надійде на вашу пошту<br>
+                ❓ Маєте питання? Напишіть нам на franciscansocialtheater@gmail.com
+            </div>
+            
+            <div class="faq-section" id="faq-section">
+                <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Поширені запитання</h2>
+                
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Чи потрібен попередній досвід з театром або акторською майстерністю? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Ні, абсолютно не потрібен. Курс розроблений для людей без попереднього досвіду. Ми використовуємо театральні техніки як інструмент особистісного розвитку, а не для підготовки акторів.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Що робити, якщо я сором'язлива людина і боюся групової роботи? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Саме для таких людей курс буде найбільш корисним. Ми створюємо безпечний простір, де кожен може розкритися у своєму темпі. Всі вправи будуються від простого до складного, без примусу.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Чи можу я пропустити одне заняття з сімейних обставин? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Курс побудований як цілісна програма, тому важливо відвідувати всі заняття. У разі непередбачених обставин, зв'яжіться зі мною - ми знайдемо рішення.<br><br>
+                        <strong>Важливо:</strong> Подаючи заявку, підтвердьте свою готовність повністю пройти курс у зазначені терміни. Через обмежену кількість місць (12 осіб) ми надаємо перевагу мотивованим учасникам, які можуть присвятити час усім заняттям.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Які вимоги до участі в курсі? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Основна вимога - ваша готовність до особистісного розвитку та повна участь у програмі. Це означає:<br>
+                        • Можливість відвідувати всі 8 днів курсу<br>
+                        • Відкритість до групової роботи<br>
+                        • Готовність виконувати вправи та завдання<br>
+                        • Повага до інших учасників та їхнього досвіду<br><br>
+                        Оскільки місця обмежені, ми вибираємо учасників, які справді готові присвятити час трансформаційному процесу.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Що потрібно приносити на заняття? Чи є дрес-код? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Приносьте тільки себе та відкритість до нового досвіду. Одягайтеся зручно - ми будемо рухатися. Спортивний або повсякденний одяг, зручне взуття. Всі матеріали надаються.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Чи можу я повернути кошти, якщо курс мені не підійде? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Так, якщо після першого дня ви розумієте, що курс не для вас, ми повернемо 80% вартості. Після другого дня - 50%. Мета курсу - ваш розвиток, а не примус.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Я живу не в Бостоні. Чи плануються курси в інших містах? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Так, ми плануємо розширення на Нью-Йорк, Філадельфію, Чикаго та Лос-Анджелес. Якщо залишите заявку, ми повідомимо вас першими про відкриття курсів у вашому місті.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Чи підходить курс людям старше 50 років? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Абсолютно! Вік не має значення для особистісного розвитку. У нас брали участь люди від 25 до 65 років. Головне - ваша готовність до змін та відкритість новому досвіду.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <h4 onclick="toggleFaq(this)">
+                        Чи безпечно ділитися особистими переживаннями в групі? ▼
+                    </h4>
+                    <div class="faq-answer">
+                        Конфіденційність - основа нашої роботи. Перед початком всі учасники підписують угоду про нерозголошення. Ви ділитеся тільки тим, чим готові поділитися, без примусу до відкритості.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Функція для розкриття FAQ
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isVisible = answer.style.display === 'block';
+            
+            // Закрити всі інші FAQ
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.style.display = 'none';
+            });
+            document.querySelectorAll('.faq-item h4').forEach(h => {
+                h.innerHTML = h.innerHTML.replace('▲', '▼');
+            });
+            
+            // Переключити поточний FAQ
+            if (!isVisible) {
+                answer.style.display = 'block';
+                element.innerHTML = element.innerHTML.replace('▼', '▲');
+            }
+        }
+
+        // Функція відліку до 26 жовтня (дедлайн подачі заявок)
+        function updateCountdown() {
+            const deadline = new Date('October 26, 2025 23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = deadline - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            if (timeLeft > 0) {
+                document.getElementById('countdown').innerHTML = 
+                    `${days} днів ${hours} год ${minutes} хв ${seconds} сек`;
+            } else {
+                document.getElementById('countdown').innerHTML = "Прийом заявок завершено!";
+            }
+        }
+
+        // Оновлення відліку кожну секунду
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
